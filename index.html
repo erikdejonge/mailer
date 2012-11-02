@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Mailer : Python mail object. Wrapper around smtplib and the email python. Robust python mailing module, has had a lot of miles in the real world" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Mailer</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/erikdejonge/mailer">View on GitHub</a>
+
+          <h1 id="project_title">Mailer</h1>
+          <h2 id="project_tagline">Python mail object. Wrapper around smtplib and the email python. Robust python mailing module, has had a lot of miles in the real world</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/erikdejonge/mailer/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/erikdejonge/mailer/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>mailer</h1>
+
+<p>Python mail object. Wrapper around smtplib and the email python.
+Robust python mailing module, has had a lot of miles in the real world</p>
+
+<h1>Usage</h1>
+
+<p>Simple but robust emailing from python</p>
+
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">__init__</span> <span class="kn">import</span> <span class="n">Email</span><span class="p">,</span> <span class="n">Body</span>
+
+
+<span class="k">class</span> <span class="nc">Setting</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">""" settings object, with config info, can also be a django settings object """</span>
+
+    <span class="n">email_host</span> <span class="o">=</span> <span class="s">"mail.server.com"</span>
+    <span class="n">email_host_password</span> <span class="o">=</span> <span class="s">"password"</span>
+    <span class="n">email_host_user</span> <span class="o">=</span> <span class="s">"smtp_user_name"</span>
+    <span class="n">email_from_email</span> <span class="o">=</span> <span class="s">"email@somehost.com"</span>
+    <span class="n">email_from</span> <span class="o">=</span> <span class="s">"test email mailer"</span>
+
+    <span class="k">def</span> <span class="nf">randommethod</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">""" method to silence pylint """</span>
+
+        <span class="bp">self</span> <span class="o">=</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">randommethod1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">""" method to silence pylint """</span>
+
+        <span class="bp">self</span> <span class="o">=</span> <span class="bp">self</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">""" test mailer """</span>
+
+    <span class="n">settings</span> <span class="o">=</span> <span class="n">Setting</span><span class="p">()</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">Email</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+    <span class="n">email</span><span class="o">.</span><span class="n">reply_email</span> <span class="o">=</span> <span class="p">(</span><span class="s">"erik@a8.nl"</span><span class="p">,</span> <span class="s">"Erik de Jonge"</span><span class="p">)</span>
+    <span class="n">email</span><span class="o">.</span><span class="n">to_email</span> <span class="o">=</span> <span class="p">(</span><span class="s">"erik@a8.nl"</span><span class="p">,</span> <span class="s">"Erik de Jonge Reply"</span><span class="p">)</span>
+    <span class="n">email</span><span class="o">.</span><span class="n">subject</span> <span class="o">=</span> <span class="s">"Hello world subject?"</span>
+    <span class="n">email</span><span class="o">.</span><span class="n">add_attachment</span><span class="p">(</span><span class="s">"README.md"</span><span class="p">)</span>
+    <span class="n">email</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="n">Body</span><span class="p">(</span><span class="s">"&lt;html&gt;&lt;head&gt;&lt;title&gt;hello&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;b&gt;hello world&lt;/b&gt;&lt;br/&gt;&lt;i&gt;en dit is italic&lt;/i&gt;&lt;/body&gt;&lt;/html&gt;"</span><span class="p">)</span>
+    <span class="n">email</span><span class="o">.</span><span class="n">send</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Mailer maintained by <a href="https://github.com/erikdejonge">erikdejonge</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
