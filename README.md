@@ -51,3 +51,8 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+PyDoc generated
+================
+
+http://erikdejonge.github.com/mailer/
