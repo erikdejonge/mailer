@@ -79,6 +79,205 @@ Robust python mailing module, has had a lot of miles in the real world</p>
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
+
+<h1>PyDoc generated</h1>
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="mailer.html#Body">Body</a>
+</font></dt><dt><font face="helvetica, arial"><a href="mailer.html#Email">Email</a>
+</font></dt><dt><font face="helvetica, arial"><a href="mailer.html#EmailHeader">EmailHeader</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="mailer.html#EmailName">EmailName</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Body">class <strong>Body</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>mail&nbsp;body,&nbsp;html&nbsp;and&nbsp;text<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Body-__init__"><strong>__init__</strong></a>(self, html, txt<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="Body-get_html"><strong>get_html</strong></a>(self)</dt><dd><tt>mail&nbsp;message&nbsp;in&nbsp;html</tt></dd></dl>
+
+<dl><dt><a name="Body-get_txt"><strong>get_txt</strong></a>(self)</dt><dd><tt>mail&nbsp;message&nbsp;in&nbsp;text</tt></dd></dl>
+
+<dl><dt><a name="Body-set_html"><strong>set_html</strong></a>(self, value)</dt><dd><tt>mail&nbsp;message&nbsp;in&nbsp;html</tt></dd></dl>
+
+<dl><dt><a name="Body-set_txt"><strong>set_txt</strong></a>(self, value)</dt><dd><tt>mail&nbsp;message&nbsp;in&nbsp;text</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>html</strong></dt>
+<dd><tt>mail&nbsp;message&nbsp;in&nbsp;html</tt></dd>
+</dl>
+<dl><dt><strong>txt</strong></dt>
+<dd><tt>mail&nbsp;message&nbsp;in&nbsp;text</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Email">class <strong>Email</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="__builtin__.html#object">object</a>&nbsp;to&nbsp;send&nbsp;an&nbsp;email<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Email-__init__"><strong>__init__</strong></a>(self, settings)</dt></dl>
+
+<dl><dt><a name="Email-add_attachment"><strong>add_attachment</strong></a>(self, fname)</dt><dd><tt>add&nbsp;a&nbsp;filename&nbsp;to&nbsp;the&nbsp;attachment&nbsp;list</tt></dd></dl>
+
+<dl><dt><a name="Email-get_attachments"><strong>get_attachments</strong></a>(self)</dt><dd><tt>list&nbsp;of&nbsp;filenames</tt></dd></dl>
+
+<dl><dt><a name="Email-get_body"><strong>get_body</strong></a>(self)</dt><dd><tt><a href="#Body">Body</a>&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="Email-get_recipient_list"><strong>get_recipient_list</strong></a>(self)</dt><dd><tt>list&nbsp;of&nbsp;emails</tt></dd></dl>
+
+<dl><dt><a name="Email-get_reply_email"><strong>get_reply_email</strong></a>(self)</dt><dd><tt><a href="#EmailName">EmailName</a>&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="Email-get_subject"><strong>get_subject</strong></a>(self)</dt><dd><tt>mail&nbsp;subject</tt></dd></dl>
+
+<dl><dt><a name="Email-get_to_email"><strong>get_to_email</strong></a>(self)</dt><dd><tt><a href="#EmailName">EmailName</a>&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="Email-send"><strong>send</strong></a>(self)</dt><dd><tt>send&nbsp;the&nbsp;mail</tt></dd></dl>
+
+<dl><dt><a name="Email-set_attachments"><strong>set_attachments</strong></a>(self, value)</dt><dd><tt>add&nbsp;a&nbsp;filename</tt></dd></dl>
+
+<dl><dt><a name="Email-set_body"><strong>set_body</strong></a>(self, value)</dt><dd><tt><a href="#Body">Body</a>&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="Email-set_extra_address"><strong>set_extra_address</strong></a>(self, email)</dt><dd><tt><a href="#EmailName">EmailName</a>&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="Email-set_reply_email"><strong>set_reply_email</strong></a>(self, email)</dt><dd><tt><a href="#EmailName">EmailName</a>&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="Email-set_subject"><strong>set_subject</strong></a>(self, value)</dt><dd><tt>mail&nbsp;subject</tt></dd></dl>
+
+<dl><dt><a name="Email-set_to_email"><strong>set_to_email</strong></a>(self, email)</dt><dd><tt><a href="#EmailName">EmailName</a>&nbsp;class</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>attachments</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;filenames</tt></dd>
+</dl>
+<dl><dt><strong>body</strong></dt>
+<dd><tt>Body&nbsp;class</tt></dd>
+</dl>
+<dl><dt><strong>extra_address</strong></dt>
+</dl>
+<dl><dt><strong>reply_email</strong></dt>
+<dd><tt>EmailName&nbsp;class</tt></dd>
+</dl>
+<dl><dt><strong>subject</strong></dt>
+<dd><tt>mail&nbsp;subject</tt></dd>
+</dl>
+<dl><dt><strong>to_email</strong></dt>
+<dd><tt>EmailName&nbsp;class</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="EmailHeader">class <strong>EmailHeader</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>mail&nbsp;header,&nbsp;subject,&nbsp;from,&nbsp;to,&nbsp;reply<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="EmailHeader-__init__"><strong>__init__</strong></a>(self, subject, from_obj, to_obj, reply_obj)</dt></dl>
+
+<dl><dt><a name="EmailHeader-get_from_obj"><strong>get_from_obj</strong></a>(self)</dt><dd><tt>mail&nbsp;to</tt></dd></dl>
+
+<dl><dt><a name="EmailHeader-get_reply_obj"><strong>get_reply_obj</strong></a>(self)</dt><dd><tt>mail&nbsp;reply</tt></dd></dl>
+
+<dl><dt><a name="EmailHeader-get_subject"><strong>get_subject</strong></a>(self)</dt><dd><tt>mail&nbsp;subject</tt></dd></dl>
+
+<dl><dt><a name="EmailHeader-get_to_obj"><strong>get_to_obj</strong></a>(self)</dt><dd><tt>mail&nbsp;to</tt></dd></dl>
+
+<dl><dt><a name="EmailHeader-set_subject"><strong>set_subject</strong></a>(self, value)</dt><dd><tt>mail&nbsp;subject</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>from_obj</strong></dt>
+<dd><tt>mail&nbsp;to</tt></dd>
+</dl>
+<dl><dt><strong>reply_obj</strong></dt>
+<dd><tt>mail&nbsp;reply</tt></dd>
+</dl>
+<dl><dt><strong>subject</strong></dt>
+<dd><tt>mail&nbsp;subject</tt></dd>
+</dl>
+<dl><dt><strong>to_obj</strong></dt>
+<dd><tt>mail&nbsp;to</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="EmailName">class <strong>EmailName</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>email,&nbsp;name&nbsp;holder,&nbsp;initialize&nbsp;with&nbsp;email&nbsp;first<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="EmailName-__init__"><strong>__init__</strong></a>(self, email, name<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="EmailName-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>email</strong> = None</dl>
+
+<dl><dt><strong>name</strong> = None</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-GenerateMessage"><strong>GenerateMessage</strong></a>(from_name, from_email, reply_to_name, reply_to_email, to_name, to_email, subject, html_body, plain_body, attachments)</dt><dd><tt>builds&nbsp;message</tt></dd></dl>
+ <dl><dt><a name="-SendMessage"><strong>SendMessage</strong></a>(from_email, to_list, msg)</dt><dd><tt>old&nbsp;style&nbsp;wrapper</tt></dd></dl>
+ <dl><dt><a name="-add_attachments"><strong>add_attachments</strong></a>(mime_mulitpart_mixed, attachments)</dt><dd><tt>takes&nbsp;list&nbsp;of&nbsp;filenames&nbsp;and&nbsp;adds&nbsp;the&nbsp;mimemessages&nbsp;to&nbsp;the&nbsp;mulipart&nbsp;<a href="__builtin__.html#object">object</a></tt></dd></dl>
+ <dl><dt><a name="-create_message_container"><strong>create_message_container</strong></a>(em_from, em_to, em_reply_to)</dt><dd><tt>genereates&nbsp;the&nbsp;dictionary&nbsp;with&nbsp;all&nbsp;the&nbsp;relevant&nbsp;headers</tt></dd></dl>
+ <dl><dt><a name="-create_mime_multipart_msg"><strong>create_mime_multipart_msg</strong></a>(plain_body, html_body)</dt><dd><tt>adds&nbsp;html&nbsp;and&nbsp;text&nbsp;together&nbsp;in&nbsp;one&nbsp;message</tt></dd></dl>
+ <dl><dt><a name="-determine_encoding"><strong>determine_encoding</strong></a>(text)</dt><dd><tt>tries&nbsp;for&nbsp;charsets&nbsp;"US-ASCII",&nbsp;"ISO-8859-1",&nbsp;"UTF-8"</tt></dd></dl>
+ <dl><dt><a name="-gen_mime_message"><strong>gen_mime_message</strong></a>(header, body, attachments)</dt><dd><tt>builds&nbsp;message</tt></dd></dl>
+ <dl><dt><a name="-send_message"><strong>send_message</strong></a>(from_email, to_list, mime_multipart_mixed_message, settings<font color="#909090">=None</font>)</dt><dd><tt>sends&nbsp;the&nbsp;multipart&nbsp;to&nbsp;the&nbsp;to_list,&nbsp;from&nbsp;email&nbsp;must&nbsp;be&nbsp;an&nbsp;email&nbsp;on&nbsp;the&nbsp;smtp&nbsp;server</tt></dd></dl>
+</td></tr></table>
+
+
       </section>
     </div>
 
