@@ -21,13 +21,6 @@ from email.mime.image import MIMEImage
 from email import utils, encoders
 from BeautifulSoup import UnicodeDammit
 
-# pylint: disable-msg=F0401
-
-import html2text
-
-
-# pylint: enable-msg=F0401
-
 def determine_encoding(text):
     """ tries for charsets \"US-ASCII\", \"ISO-8859-1\", \"UTF-8\" """
 
@@ -355,7 +348,13 @@ class Body(object):
         """ mail message in text """
 
         if not self._txt:
-            return str(html2text.html2text(self.html))
+            try:
+                import html2text
+                return str(html2text.html2text(self.html))
+            except ImportError, ex:
+                ex = ex
+                return self.html
+
         return self._txt
 
     txt = property(get_txt, set_txt)
