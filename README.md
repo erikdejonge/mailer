@@ -5,6 +5,22 @@ Python mail object. Wrapper around smtplib and the email python.
 Robust python mailing module, has had a lot of miles in the real world
 
 
+License
+===========
+
+<pre>
+This source code is licensed under the GNU General Public License,
+Version 3. http://www.gnu.org/licenses/gpl-3.0.en.html
+
+Copyright (C)
+
+Erik de Jonge <erik@a8.nl>
+Actve8 BV
+Rotterdam
+www.a8.nl
+</pre>
+
+
 Usage
 =====
 
