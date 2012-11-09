@@ -1,26 +1,4 @@
-# pylint: disable-msg=C0103
-# pylint: enable-msg=C0103
-# tempfile regex format
-#
-# pylint: disable-msg=C0111
-# missing docstring
-#
-# pylint: disable-msg=W0232
-# no __init__ method
-#
-# pylint: disable-msg=R0903
-# to few public methods
-#
-# DISABLED_ylint: disable-msg=R0201
-# method could be a function
-#
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
-# pylint: disable-msg=C0103
-# pylint: enable-msg=C0103
-# tempfile regex format, surpress komodo's pylint implementation
-
+# coding=utf-8
 
 """
 CouchDB library to save python objects, handles conflict resolution on class attribute level.
@@ -37,6 +15,7 @@ www.a8.nl
 from __init__ import Email, Body
 
 
+#noinspection PyUnusedLocal
 class Setting(object):
     """ settings object, with config info, can also be a django settings object """
 
@@ -45,16 +24,6 @@ class Setting(object):
     email_host_user = "smtp_user_name"
     email_from_email = "email@somehost.com"
     email_from = "test email mailer"
-
-    def randommethod(self):
-        """ method to silence pylint """
-
-        self = self
-
-    def randommethod1(self):
-        """ method to silence pylint """
-
-        self = self
 
 
 def main():

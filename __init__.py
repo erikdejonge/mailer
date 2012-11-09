@@ -1,10 +1,4 @@
-# pylint: disable-msg=C0103
-# pylint: enable-msg=C0103
-# tempfile regex format
-
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
+# coding=utf-8
 """
 
 Robust python mailing module, has had a lot of miles in the real world
@@ -49,6 +43,7 @@ def determine_encoding(text):
     raise Exception(error_msg)
 
 
+#noinspection PyArgumentEqualDefault,PyUnresolvedReferences
 def create_message_container(em_from, em_to, em_reply_to):
     """ genereates the dictionary with all the relevant headers """
 
@@ -72,6 +67,7 @@ def create_message_container(em_from, em_to, em_reply_to):
     return mime_mulitpart_mixed
 
 
+#noinspection PyArgumentEqualDefault,PyUnresolvedReferences
 def create_mime_multipart_msg(plain_body, html_body):
     """ adds html and text together in one message """
 
@@ -128,6 +124,7 @@ def add_attachments(mime_mulitpart_mixed, attachments):
         else:
             file_pointer = open(file_name, "rb")
             parta = MIMEBase(maintype, subtype)
+            #noinspection PyUnresolvedReferences
             parta.set_payload(file_pointer.read())
             file_pointer.close()
 
@@ -137,6 +134,7 @@ def add_attachments(mime_mulitpart_mixed, attachments):
 
         # Set the filename parameter
 
+        #noinspection PyUnresolvedReferences
         parta.add_header("Content-Disposition", "attachment; filename=%s" % os.path.basename(file_name))
         mime_mulitpart_mixed.attach(parta)
     return mime_mulitpart_mixed
@@ -160,6 +158,7 @@ def send_message(from_email, to_list, mime_multipart_mixed_message, settings=Non
     except Exception, exc:
         for email in to_list:
             result[email] = str(exc)
+    #noinspection PyUnusedLocal
     try:
         mta.quit()
     except smtplib.SMTPException, exc:
@@ -175,7 +174,7 @@ def gen_mime_message(header, body, attachments):
     reply_hdr = header.reply_obj
     subject = header.get_subject()
 
-    # create the mimeobject with the headers, and recipiants
+    # create the mimeobject with the headers, and recipients
 
     message_container = create_message_container(from_hdr, to_hdr, reply_hdr)
 
@@ -185,8 +184,9 @@ def gen_mime_message(header, body, attachments):
     html_body = body.html
     mime_multipart_msg = create_mime_multipart_msg(plain_body, html_body)
 
-    # attache the mesage (with html and plain text) to the message container
+    # attache the message (with html and plain text) to the message container
 
+    #noinspection PyUnresolvedReferences
     message_container.attach(mime_multipart_msg)
 
     # add the attachments
@@ -200,15 +200,6 @@ def gen_mime_message(header, body, attachments):
 
     return message_container
 
-
-# too many arguments
-# pylint: disable-msg=R0913
-#
-# invalid name
-# pylint: disable-msg=C0103
-#
-# too many local variiables
-# pylint: disable-msg=R0914
 
 def GenerateMessage(
     from_name,
@@ -228,7 +219,7 @@ def GenerateMessage(
     to_hdr = EmailName(to_email, to_name)
     reply_hdr = EmailName(reply_to_email, reply_to_name)
 
-    # create the mimeobject with the headers, and recipiants
+    # create the mimeobject with the headers, and recipients
 
     message_container = create_message_container(from_hdr, to_hdr, reply_hdr)
 
@@ -236,8 +227,9 @@ def GenerateMessage(
 
     mime_multipart_msg = create_mime_multipart_msg(plain_body, html_body)
 
-    # attache the mesage (with html and plain text) to the message container
+    # attache the message (with html and plain text) to the message container
 
+    #noinspection PyUnresolvedReferences
     message_container.attach(mime_multipart_msg)
 
     # add the attachments
@@ -258,13 +250,7 @@ def SendMessage(from_email, to_list, msg):
     return send_message(from_email, to_list, msg)
 
 
-# pylint: enable-msg=R0913
-# pylint: enable-msg=C0103
-# pylint: enable-msg=R0914
-# too few public methods
-# pylint: disable-msg=R0903
-
-class EmailName:
+class EmailName(object):
     """ email, name holder, initialize with email first """
 
     name = None
@@ -288,8 +274,6 @@ class EmailName:
             self.name = name
         self.email = email
 
-
-# pylint: enable-msg=R0903
 
 class EmailHeader(object):
     """ mail header, subject, from, to, reply """
@@ -361,11 +345,12 @@ class Body(object):
         """ mail message in text """
 
         if not self._txt:
+            #noinspection PyUnusedLocal
             try:
+                #noinspection PyUnresolvedReferences
                 import html2text
                 return str(html2text.html2text(self.html))
             except ImportError, ex:
-                ex = ex
                 return self.html
 
         return self._txt
@@ -385,6 +370,7 @@ class Body(object):
     html = property(get_html, set_html)
 
 
+#noinspection PyArgumentEqualDefault
 class Email(object):
     """ object to send an email """
 
@@ -453,6 +439,7 @@ class Email(object):
             for email in emails:
                 value = EmailName(email, email)
                 self._to_email.append(value)
+            return
         else:
             value = EmailName(email, email)
         self._to_email.append(value)
