@@ -29,7 +29,9 @@ from email import utils, encoders
 from BeautifulSoup import UnicodeDammit
 
 def determine_encoding(text):
-    """ tries for charsets \"US-ASCII\", \"ISO-8859-1\", \"UTF-8\" """
+    """ tries for charsets \"US-ASCII\", \"ISO-8859-1\", \"UTF-8\"
+    @param text:
+    """
 
     possible_charsets = ["US-ASCII", "ISO-8859-1", "UTF-8"]
     for charset in possible_charsets:
@@ -45,7 +47,11 @@ def determine_encoding(text):
 
 #noinspection PyArgumentEqualDefault,PyUnresolvedReferences
 def create_message_container(em_from, em_to, em_reply_to):
-    """ genereates the dictionary with all the relevant headers """
+    """ genereates the dictionary with all the relevant headers
+    @param em_from:
+    @param em_to:
+    @param em_reply_to:
+    """
 
     from_hdr = (utils.formataddr((em_from.name, em_from.email)) if len(em_from.name) > 0 else utils.formataddr((False, em_from.email)))
     reply_to_hdr = (utils.formataddr((em_reply_to.name, em_reply_to.email)) if len(em_reply_to.name) > 0 else utils.formataddr((False, em_reply_to.name)))
@@ -69,7 +75,10 @@ def create_message_container(em_from, em_to, em_reply_to):
 
 #noinspection PyArgumentEqualDefault,PyUnresolvedReferences
 def create_mime_multipart_msg(plain_body, html_body):
-    """ adds html and text together in one message """
+    """ adds html and text together in one message
+    @param plain_body:
+    @param html_body:
+    """
 
     html_body_charset = determine_encoding(html_body)
     plain_body_charset = determine_encoding(plain_body)
@@ -94,7 +103,10 @@ def create_mime_multipart_msg(plain_body, html_body):
 
 
 def add_attachments(mime_mulitpart_mixed, attachments):
-    """ takes list of filenames and adds the mimemessages to the mulipart object """
+    """ takes list of filenames and adds the mimemessages to the mulipart object
+    @param mime_mulitpart_mixed:
+    @param attachments:
+    """
 
     for file_name in attachments:
         if not os.path.isfile(file_name):
@@ -141,7 +153,12 @@ def add_attachments(mime_mulitpart_mixed, attachments):
 
 
 def send_message(from_email, to_list, mime_multipart_mixed_message, settings=None):
-    """ sends the multipart to the to_list, from email must be an email on the smtp server """
+    """ sends the multipart to the to_list, from email must be an email on the smtp server
+    @param from_email:
+    @param to_list:
+    @param mime_multipart_mixed_message:
+    @param settings:
+    """
 
     if not settings:
         raise Exception("no settings object provided")
@@ -167,7 +184,11 @@ def send_message(from_email, to_list, mime_multipart_mixed_message, settings=Non
 
 
 def gen_mime_message(header, body, attachments):
-    """ builds message """
+    """ builds message
+    @param header:
+    @param body:
+    @param attachments:
+    """
 
     from_hdr = header.from_obj
     to_hdr = header.to_obj
@@ -213,7 +234,18 @@ def GenerateMessage(
     plain_body,
     attachments,
     ):
-    """ builds message """
+    """ builds message
+    @param from_name:
+    @param from_email:
+    @param reply_to_name:
+    @param reply_to_email:
+    @param to_name:
+    @param to_email:
+    @param subject:
+    @param html_body:
+    @param plain_body:
+    @param attachments:
+    """
 
     from_hdr = EmailName(from_email, from_name)
     to_hdr = EmailName(to_email, to_name)
@@ -245,7 +277,11 @@ def GenerateMessage(
 
 
 def SendMessage(from_email, to_list, msg):
-    """ old style wrapper """
+    """ old style wrapper
+    @param from_email:
+    @param to_list:
+    @param msg:
+    """
 
     return send_message(from_email, to_list, msg)
 
@@ -285,7 +321,9 @@ class EmailHeader(object):
         self._reply_obj = reply_obj
 
     def set_subject(self, value):
-        """ mail subject """
+        """ mail subject
+        @param value:
+        """
 
         self._subject = value
 
@@ -337,7 +375,9 @@ class Body(object):
         self.txt = txt
 
     def set_txt(self, value):
-        """ mail message in text """
+        """ mail message in text
+        @param value:
+        """
 
         self._txt = value
 
@@ -358,7 +398,9 @@ class Body(object):
     txt = property(get_txt, set_txt)
 
     def set_html(self, value):
-        """ mail message in html """
+        """ mail message in html
+        @param value:
+        """
 
         self._html = value
 
@@ -383,7 +425,9 @@ class Email(object):
         self._subject = None
 
     def set_subject(self, value):
-        """ mail subject """
+        """ mail subject
+        @param value:
+        """
 
         self._subject = value
 
@@ -397,7 +441,9 @@ class Email(object):
     subject = property(get_subject, set_subject)
 
     def set_body(self, value):
-        """ Body class """
+        """ Body class
+        @param value:
+        """
 
         if type(value) != Body:
             raise Exception("body has to be of type Body")
@@ -413,7 +459,9 @@ class Email(object):
     body = property(get_body, set_body)
 
     def set_to_email(self, email):
-        """ EmailName class """
+        """ EmailName class
+        @param email:
+        """
 
         self._to_email = []
         if type(email) == type(tuple()):
@@ -432,7 +480,9 @@ class Email(object):
     to_email = property(get_to_email, set_to_email)
 
     def set_extra_address(self, email):
-        """ EmailName class """
+        """ EmailName class
+        @param email:
+        """
 
         if type(email) == type(list()):
             emails = email
@@ -447,7 +497,9 @@ class Email(object):
     extra_address = property(None, set_extra_address)
 
     def set_reply_email(self, email):
-        """ EmailName class """
+        """ EmailName class
+        @param email:
+        """
 
         if type(email) == type(tuple()):
             value = EmailName(email[0], email[1])
@@ -463,7 +515,9 @@ class Email(object):
     reply_email = property(get_reply_email, set_reply_email)
 
     def set_attachments(self, value):
-        """ add a filename """
+        """ add a filename
+        @param value:
+        """
         if type(value) != type([]):
             raise Exception("must be a list of files")
         self._attachments = value
@@ -476,7 +530,9 @@ class Email(object):
     attachments = property(get_attachments, set_attachments)
 
     def add_attachment(self, fname):
-        """ add a filename to the attachment list """
+        """ add a filename to the attachment list
+        @param fname:
+        """
 
         self._attachments.append(fname)
 
