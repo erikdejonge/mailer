@@ -41,7 +41,8 @@ def determine_encoding(text):
             pass
         else:
             return charset
-    error_msg = "Unable to determine the correct encoding. Please ensure that a encoding into one of %s is possible." % (possible_charsets, )
+    error_msg = "Unable to determine the correct encoding. Please ensure that a encoding into one of %s is possible." % (
+    possible_charsets, )
     raise Exception(error_msg)
 
 
@@ -175,7 +176,7 @@ def send_message(from_email, to_list, mime_multipart_mixed_message, settings=Non
     except Exception, exc:
         for email in to_list:
             result[email] = str(exc)
-    #noinspection PyUnusedLocal
+        #noinspection PyUnusedLocal
     try:
         mta.quit()
     except smtplib.SMTPException, exc:
@@ -223,6 +224,7 @@ def gen_mime_message(header, body, attachments):
 
 
 def GenerateMessage(
+
     from_name,
     from_email,
     reply_to_name,
@@ -234,6 +236,7 @@ def GenerateMessage(
     plain_body,
     attachments,
     ):
+
     """ builds message
     @param from_name:
     @param from_email:
@@ -296,11 +299,13 @@ class EmailName(object):
         return self.name + " <" + self.email + ">"
 
     def __init__(self, email, name=None):
-        email_pattern = \
-            re.compile("(^[-!#$%&'*+/=?^_`{}|~0-9A-Z]+(\\.[-!#$%&'*+/=?^_`{}|~0-9A-Z]+)*|^\"([\\001-\\010\\013\\014\\016-\\037!#-\\[\\]-\\177]|\\\\                       "
-                       "[\\001-011\\013\\014\\016-\\177])*\")@(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\\.)+[A-Z]{2,6}\\.?$", re.IGNORECASE)  # dot-atom
+        email_pattern =\
+        re.compile(
+            "(^[-!#$%&'*+/=?^_`{}|~0-9A-Z]+(\\.[-!#$%&'*+/=?^_`{}|~0-9A-Z]+)*|^\"([\\001-\\010\\013\\014\\016-\\037!#-\\[\\]-\\177]|\\\\                       "
+            "[\\001-011\\013\\014\\016-\\177])*\")@(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\\.)+[A-Z]{2,6}\\.?$",
+            re.IGNORECASE)  # dot-atom
 
-                                         # quoted-string
+        # quoted-string
 
         if not email_pattern.match(email):
             raise Exception("This is not a valid email address -> " + str(email))
@@ -389,6 +394,7 @@ class Body(object):
             try:
                 #noinspection PyUnresolvedReferences
                 import html2text
+
                 return str(html2text.html2text(self.html))
             except ImportError, ex:
                 return self.html
