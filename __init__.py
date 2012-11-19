@@ -18,6 +18,7 @@ www.a8.nl
 import smtplib
 import os
 import re
+import logging
 import mimetypes
 from email.header import Header
 from email.mime.multipart import MIMEMultipart
@@ -57,10 +58,10 @@ def create_message_container(em_from, em_to, em_reply_to):
     from_hdr = (utils.formataddr((em_from.name, em_from.email)) if len(em_from.name) > 0 else utils.formataddr(
         (False, em_from.email)))
     reply_to_hdr = (
-    utils.formataddr((em_reply_to.name, em_reply_to.email)) if len(em_reply_to.name) > 0 else utils.formataddr(
-        (False, em_reply_to.name)))
+        utils.formataddr((em_reply_to.name, em_reply_to.email)) if len(em_reply_to.name) > 0 else utils.formataddr(
+            (False, em_reply_to.name)))
     to_hdr = (
-    utils.formataddr((em_to.name, em_to.email)) if len(em_to.name) > 0 else utils.formataddr((False, em_to.name)))
+        utils.formataddr((em_to.name, em_to.email)) if len(em_to.name) > 0 else utils.formataddr((False, em_to.name)))
     from_hdr_charset = determine_encoding(from_hdr)
     reply_to_hdr_charset = determine_encoding(reply_to_hdr)
     to_hdr_charset = determine_encoding(to_hdr)
@@ -181,11 +182,11 @@ def send_message(from_email, to_list, mime_multipart_mixed_message, settings=Non
         for email in to_list:
             result[email] = str(exc)
             #noinspection PyUnusedLocal
-        #noinspection PyUnusedLocal
+            #noinspection PyUnusedLocal
     try:
         mta.quit()
     except smtplib.SMTPException, exc:
-        pass
+        logging.error(str(exc))
     return result
 
 
