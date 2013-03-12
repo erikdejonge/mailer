@@ -169,10 +169,11 @@ def send_message(from_email, to_list, mime_multipart_mixed_message, settings=Non
     if not settings:
         raise Exception("no settings object provided")
     result = {}
-    mta = smtplib.SMTP(settings.email_host)
-    mta.login(settings.email_host_user, settings.email_host_password)
     try:
+        mta = smtplib.SMTP(settings.email_host)
+        mta.login(settings.email_host_user, settings.email_host_password)
         result = mta.sendmail(from_email, to_list, mime_multipart_mixed_message.as_string())
+        print "done"
     except smtplib.SMTPRecipientsRefused, exc:
         result = exc.recipients
     except smtplib.SMTPException, exc:
