@@ -168,26 +168,12 @@ def send_message(from_email, to_list, mime_multipart_mixed_message, settings=Non
 
     if not settings:
         raise Exception("no settings object provided")
-    result = {}
-    try:
-        mta = smtplib.SMTP(settings.email_host)
-        mta.login(settings.email_host_user, settings.email_host_password)
-        result = mta.sendmail(from_email, to_list, mime_multipart_mixed_message.as_string())
-        print "done"
-    except smtplib.SMTPRecipientsRefused, exc:
-        result = exc.recipients
-    except smtplib.SMTPException, exc:
-        for email in to_list:
-            result[email] = str(exc)
-    except Exception, exc:
-        for email in to_list:
-            result[email] = str(exc)
-            #noinspection PyUnusedLocal
-            #noinspection PyUnusedLocal
-    try:
-        mta.quit()
-    except smtplib.SMTPException, exc:
-        logging.error(str(exc))
+
+    mta = smtplib.SMTP(settings.email_host)
+    mta.login(settings.email_host_user, settings.email_host_password)
+    msg = mime_multipart_mixed_message.as_string()
+    result = mta.sendmail(from_email.as_string(), to_list, msg)
+    mta.quit()
     return result
 
 
@@ -302,6 +288,9 @@ class EmailName(object):
     email = None
 
     def __repr__(self):
+        return self.name + " <" + self.email + ">"
+
+    def as_string(self):
         return self.name + " <" + self.email + ">"
 
     def __init__(self, email, name=None):
