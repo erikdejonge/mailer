@@ -377,7 +377,8 @@ class Body(object):
         """ mail message in text
         @param value:
         """
-
+        if len(self._html.strip()) == 0:
+            self._html = value.replace("\n", "<br>\n").replace(" ", "&nbsp;")
         self._txt = value
 
     def get_txt(self):
