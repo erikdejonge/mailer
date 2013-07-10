@@ -364,10 +364,10 @@ class EmailHeader(object):
 class Body(object):
     """ mail body, html and text """
 
-    _txt = None
-    _html = None
-
     def __init__(self, html, txt=None):
+        self._txt = None
+        self._html = None
+
         self.html = html
         self.txt = txt
 
@@ -422,6 +422,7 @@ class Email(object):
         self._to_email = None
         self._reply_email = None
         self._subject = None
+        self.reply_email = None
 
     def set_subject(self, value):
         """ mail subject
