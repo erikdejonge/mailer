@@ -288,6 +288,11 @@ class EmailName(object):
         return self.name + " <" + self.email + ">"
 
     def as_string(self):
+        """
+
+
+        @return: @rtype:
+        """
         return self.name + " <" + self.email + ">"
 
     def __init__(self, email, name=None):
