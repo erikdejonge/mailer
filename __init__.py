@@ -212,7 +212,7 @@ def gen_mime_message(header, body, attachments):
 
     return message_container
 
-
+#noinspection PyPep8Naming
 def GenerateMessage(
 
         from_name,
@@ -267,7 +267,7 @@ def GenerateMessage(
 
     return message_container
 
-
+#noinspection PyPep8Naming
 def SendMessage(from_email, to_list, msg):
     """ old style wrapper
     @param from_email:
