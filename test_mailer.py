@@ -19,7 +19,7 @@ from __init__ import Email, Body
 class Setting(object):
     """ settings object, with config info, can also be a django settings object """
 
-    email_host = "smtp.gmail.com"
+    email_host = "smtp.gmail.com:587"
     email_host_password = "kjhfsd98"
     email_host_user = "cryptobox.node.errors@gmail.com"
     email_from_email = "cryptobox.node.errors@gmail.com"
@@ -48,7 +48,7 @@ def main():
     email.subject = "Hello world subject?"
     email.add_attachment("README.md")
     email.body = Body("<html><head><title>hello</title></head><body><b>hello world</b><br/><i>en dit is italic</i></body></html>")
-    email.send()
+    #email.send()
 
 if __name__ == "__main__":
     main()
