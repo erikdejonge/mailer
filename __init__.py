@@ -167,6 +167,8 @@ def send_message(from_email, to_list, mime_multipart_mixed_message, settings=Non
         raise Exception("no settings object provided")
 
     mta = smtplib.SMTP(settings.email_host)
+    mta.ehlo()
+    mta.starttls()
     mta.login(settings.email_host_user, settings.email_host_password)
     msg = mime_multipart_mixed_message.as_string()
     result = mta.sendmail(from_email.as_string(), to_list, msg)
@@ -427,7 +429,7 @@ class Email(object):
         self._to_email = None
         self._reply_email = None
         self._subject = None
-        self.reply_email = None
+        #self.reply_email = None
 
     def set_subject(self, value):
         """ mail subject

@@ -19,12 +19,11 @@ from __init__ import Email, Body
 class Setting(object):
     """ settings object, with config info, can also be a django settings object """
 
-    email_host = "mail.server.com"
-    email_host_password = "password"
-    email_host_user = "smtp_user_name"
-    email_from_email = "email@somehost.com"
+    email_host = "smtp.gmail.com"
+    email_host_password = "kjhfsd98"
+    email_host_user = "cryptobox.node.errors@gmail.com"
+    email_from_email = "cryptobox.node.errors@gmail.com"
     email_from = "test email mailer"
-
 
 def main():
     """ test mailer """
