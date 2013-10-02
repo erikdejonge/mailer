@@ -25,6 +25,7 @@ class Setting(object):
     email_from_email = "cryptobox.node.errors@gmail.com"
     email_from = "test email mailer"
 
+
 def main():
     """ test mailer """
 
@@ -37,6 +38,17 @@ def main():
     email.body = Body("<html><head><title>hello</title></head><body><b>hello world</b><br/><i>en dit is italic</i></body></html>")
     email.send()
 
+    settings.email_host = "mail.active8.nl"
+    settings.email_host_password = "48fi0b"
+    settings.email_host_user = "erik@active8.nl"
+
+    email = Email(settings)
+    email.reply_email = ("erik@a8.nl", "Erik de Jonge")
+    email.to_email = ("erik@a8.nl", "Erik de Jonge Reply")
+    email.subject = "Hello world subject?"
+    email.add_attachment("README.md")
+    email.body = Body("<html><head><title>hello</title></head><body><b>hello world</b><br/><i>en dit is italic</i></body></html>")
+    email.send()
 
 if __name__ == "__main__":
     main()
