@@ -558,6 +558,7 @@ class Email(object):
         from_obj = EmailName(self.settings.email_from_email, self.settings.email_from)
 
         if not self.reply_email:
+            #noinspection PyAttributeOutsideInit
             self.reply_email = (self.settings.email_from_email, self.settings.email_from)
         else:
             from_obj = EmailName(self.settings.email_from_email, self._reply_email.name)
