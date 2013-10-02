@@ -48,7 +48,7 @@ def main():
     email.subject = "Hello world subject?"
     email.add_attachment("README.md")
     email.body = Body("<html><head><title>hello</title></head><body><b>hello world</b><br/><i>en dit is italic</i></body></html>")
-    email.send()
+    #email.send()
 
 if __name__ == "__main__":
     main()
