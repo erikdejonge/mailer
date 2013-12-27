@@ -34,7 +34,7 @@ class EmailSettings(object):
     email_host_password = "ryd5bayk6dab6ke5"
     email_host_user = "cryptobox.notifications@gmail.com "
     email_from_email = "cryptobox.notifications@gmail.com "
-    email_from = "test email mailer cryptobox.notifications@gmail.com"
+    email_from = "Cryptobox"
 
 
 def determine_encoding(text):
