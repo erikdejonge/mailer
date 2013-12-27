@@ -33,7 +33,6 @@ class EmailSettings(object):
     email_host_password = "kjhfsd98"
     email_host_user = "cryptobox.node.errors@gmail.com"
     email_from_email = "cryptobox.node.errors@gmail.com"
-    email_from = "Cryptobox"
 
 def determine_encoding(text):
     """ tries for charsets \"US-ASCII\", \"ISO-8859-1\", \"UTF-8\"
