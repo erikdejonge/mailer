@@ -26,6 +26,15 @@ from email.mime.image import MIMEImage
 from email import utils, encoders
 from BeautifulSoup import UnicodeDammit
 
+class EmailSettings(object):
+    """ settings object, with config info, can also be a django settings object """
+
+    email_host = "smtp.gmail.com:587"
+    email_host_password = "kjhfsd98"
+    email_host_user = "cryptobox.node.errors@gmail.com"
+    email_from_email = "cryptobox.node.errors@gmail.com"
+    email_from = "Cryptobox"
+
 def determine_encoding(text):
     """ tries for charsets \"US-ASCII\", \"ISO-8859-1\", \"UTF-8\"
     @param text:
@@ -422,7 +431,9 @@ class Body(object):
 class Email(object):
     """ object to send an email """
 
-    def __init__(self, settings):
+    def __init__(self, settings=None):
+        if not settings:
+            settings = EmailSettings()
         self.settings = settings
         self._attachments = []
         self._body = None
@@ -551,7 +562,7 @@ class Email(object):
 
     def send(self):
         """ send the mail """
-
+        print self.settings
         if not self.to_email:
             raise Exception("The to_email property has not been set")
 
