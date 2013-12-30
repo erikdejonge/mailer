@@ -15,7 +15,6 @@ www.a8.nl
 
 import smtplib
 import os
-import re
 import mimetypes
 from email.header import Header
 from email.mime.multipart import MIMEMultipart
