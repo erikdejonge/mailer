@@ -15,6 +15,7 @@ www.a8.nl
 
 import smtplib
 import os
+import re
 import mimetypes
 from email.header import Header
 from email.mime.multipart import MIMEMultipart
@@ -24,17 +25,6 @@ from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email import utils, encoders
 from BeautifulSoup import UnicodeDammit
-
-#noinspection PyUnusedLocal
-class EmailSettings(object):
-    """ settings object, with config info, can also be a django settings object """
-
-    email_host = "smtp.gmail.com:587"
-    email_host_password = "ryd5bayk6dab6ke5"
-    email_host_user = "cryptobox.notifications@gmail.com "
-    email_from_email = "cryptobox.notifications@gmail.com "
-    email_from = "Cryptobox"
-
 
 def determine_encoding(text):
     """ tries for charsets \"US-ASCII\", \"ISO-8859-1\", \"UTF-8\"
@@ -52,6 +42,7 @@ def determine_encoding(text):
     error_msg = "Unable to determine the correct encoding. Please ensure that a encoding into one of %s is possible." % (
         possible_charsets, )
     raise Exception(error_msg)
+
 
 #noinspection PyArgumentEqualDefault,PyUnresolvedReferences
 def create_message_container(em_from, em_to, em_reply_to):
@@ -83,6 +74,7 @@ def create_message_container(em_from, em_to, em_reply_to):
     mime_mulitpart_mixed["Precedence"] = Header("junk", "US-ASCII")
     mime_mulitpart_mixed["Auto-Submitted"] = Header("auto-generated", "US-ASCII")
     return mime_mulitpart_mixed
+
 
 #noinspection PyArgumentEqualDefault,PyUnresolvedReferences
 def create_mime_multipart_msg(plain_body, html_body):
@@ -224,6 +216,7 @@ def gen_mime_message(header, body, attachments):
 
 #noinspection PyPep8Naming
 def GenerateMessage(
+
         from_name,
         from_email,
         reply_to_name,
@@ -305,7 +298,15 @@ class EmailName(object):
         return self.name + " <" + self.email + ">"
 
     def __init__(self, email, name=None):
-        if not "@" in email:
+        email_pattern =\
+        re.compile(
+            "(^[-!#$%&'*+/=?^_`{}|~0-9A-Z]+(\\.[-!#$%&'*+/=?^_`{}|~0-9A-Z]+)*|^\"([\\001-\\010\\013\\014\\016-\\037!#-\\[\\]-\\177]|\\\\                       "
+            "[\\001-011\\013\\014\\016-\\177])*\")@(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\\.)+[A-Z]{2,6}\\.?$",
+            re.IGNORECASE)  # dot-atom
+
+        # quoted-string
+
+        if not email_pattern.match(email):
             raise Exception("This is not a valid email address -> " + str(email))
         if not name:
             self.name = email
@@ -393,6 +394,7 @@ class Body(object):
             try:
                 #noinspection PyUnresolvedReferences
                 import html2text
+
                 return str(html2text.html2text(self.html))
             except ImportError, ex:
                 return self.html
@@ -415,13 +417,12 @@ class Body(object):
 
     html = property(get_html, set_html)
 
+
 #noinspection PyArgumentEqualDefault
 class Email(object):
     """ object to send an email """
 
-    def __init__(self, settings=None):
-        if not settings:
-            settings = EmailSettings()
+    def __init__(self, settings):
         self.settings = settings
         self._attachments = []
         self._body = None
